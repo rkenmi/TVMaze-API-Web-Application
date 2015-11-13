@@ -22,8 +22,8 @@ app.directive('searchResults', function(){
       shows : '=shows'
     },
     templateUrl: 'searchResult.html',
-    link: function (scope, element) {
-      scope.removeHTML = function(text) {
+    controller: function ($scope, $element) {
+      $scope.removeHTML = function(text) {
         return text.replace(/<(?:.|\n)*?>/gm, ''); // a function borrowed from StackOverflow on removing HTML tags from strings
       };
     }
