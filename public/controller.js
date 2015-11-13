@@ -1,6 +1,6 @@
 var app = angular.module('ng-App', ['ngResource']);
 
-angular.module('ng-App').factory('Issue', function($resource) {
+app.factory('Issue', function($resource) {
   return $resource('/api/shows/:q'); // Note the full endpoint address
 });
 
