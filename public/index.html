@@ -8,13 +8,13 @@
 </head>
 <body ng-controller="project">
 
-	<div class="container" >
+	<div class="container">
 		<div class="page-header">
-			<h1>Search for your favorite TV Show!</h1>
+				<h1>Search for your favorite TV Show!</h1>
 		</div>
 
 		<div class="row">
-			<div class="col-md-4">
+			<div class="col-md-4 col-md-offset-4">
 				<form ng-submit="searchShow()">
 				  <div class="form-group">
 				    <label for="search">Search</label>
@@ -27,73 +27,12 @@
 			</div>
 		</div>
 
-		<h3>{{searchStr}} <small>{{groups.length}} Total</small></h3>
+		<h3>{{searchStr}} <small>{{shows.length}} Results</small></h3>
 		<hr />
 
-        <!--
-            Note: You should use ng-repeat to generate 'rows' for each of your groups
-                  Here, I have included 3 rows, but your HTML should only have 1 (your Angular Template).
-        -->
-		<div class="row" ng-repeat="show in shows">
-			<div class="col-xs-12">
-				<div class="panel panel-primary">
-					<div class="panel-heading">
-						<div class="panel-title">
-							{{show.name}}
-            </div>
-					</div>
-					<div class="panel-body">
-						<div class="col-md-8">
-							<h3>Description</h3>
-
-							<p class="lead">
-								{{removeHTML(show.summary)}}
-							</p>
-						</div>
-						<div class="col-md-3">
-								<img ng-src="{{show.image.medium}}"/>
-						</div>
-
-						<div class="row">
-							<div class="col-md-3">
-								<h3>Members <small>{{group.members.length}} Total</small></h3>
-                                <hr />
-
-                                <!-- Note: Here, you should use ng-repeat to list all students who are part of this group. -->
-								<ul class="list-unstyled">
-									<li ng-repeat="member in group.members">{{member.getName()}}<a href="" ng-click="removeStu( member, group )"><span class="glyphicon glyphicon-trash"></span></a></li>
-								</ul>
-							</div>
-							<div class="col-md-8">
-								<h3>Tasks <small>{{countDone(group)}} of {{getTasksLen(group.tasks)}} Completed</small></h3>
-                                <hr />
-
-                                <ul class="list-unstyled">
-                                    <!-- Note: Here, you should use ng-repeat to iterate
-                                               over all of the tasks associated with the current group   -->
-                                    <li ng-repeat="task in group.tasks">
-                                        <select name="" id="">
-                                            <!-- Note: Here, you should use ng-repeat to iterate
-                                                       over all students in this group -->
-                                            <option ng-repeat="member in group.members" value="member">{{member.getName()}}</option>
-                                        </select>
-                                        <input type="checkbox" ng-model="task.done">
-																						{{task.text}}
-                                        <!-- Note: Consider binding a click event to the anchor tag below to
-                                                   remove this task -->
-                                        <a href="" ng-click="removeTask( task, group )"><span class="glyphicon glyphicon-trash"></span></a>
-                                    </li>
-                                </ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
+		<div search-results
+		shows="shows"></div>
 
 	</div>
-
-
 </body>
 </html>

@@ -1,0 +1,24 @@
+<div class="row" ng-repeat="show in shows">
+  <div class="col-xs-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="panel-title">
+          <h2>{{show.name}}</h2>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="col-md-9">
+          <h3>Description</h3>
+          <hr />
+          <p class="lead">
+            {{removeHTML(show.summary)}}
+          </p>
+        </div>
+        <div class="col-md-3">
+            <img ng-src="{{show.image.medium}}"/>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

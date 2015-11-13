@@ -10,10 +10,6 @@ app.get('/', function (req, res) {
 	res.sendFile('./public/index.html');
 });
 
-app.get('/api/issues', function (req, res) {
-  res.send("Hmm, so you got issues? Not my problem.");
-});
-
 app.get('/api/shows/:leg', function(req, res){
   console.log(req.params.leg);
   var search = req.params.leg;
@@ -27,14 +23,10 @@ app.get('/api/shows/:leg', function(req, res){
           for(var i = 0; i < response.body.length; i++){
             arr.push(response.body[i].show);
           }
-          //console.log(shows);
           res.send(arr);
-          //response.body[0].show;
-
         }
       }
   });
-
 });
 
 app.listen(8080, function () {
