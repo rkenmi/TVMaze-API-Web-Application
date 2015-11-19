@@ -1,0 +1,6 @@
+{
+  "TVMaze":{
+    "url": "http://api.tvmaze.com/search/shows?q=",
+    "key": ""
+  }
+}
