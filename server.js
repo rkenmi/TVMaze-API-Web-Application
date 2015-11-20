@@ -2,13 +2,12 @@ var express = require('express');
 var superagent = require('superagent');
 var app = express();
 
-
 app.use(express.static('./client')); // Set the web root to be ./client
 
 require('./api/routes')(app);
 
 app.get('*', function (req, res) {
-	res.sendFile('./public/index.html', { root: __dirname });
+	res.sendFile('/client/views/index.html', { root: __dirname });
 });
 
 app.listen(8080, function () {
