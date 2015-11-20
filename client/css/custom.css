@@ -1,0 +1,51 @@
+
+
+
+navbar navbar-inverse navbar-static-top {
+  color: black;
+  font-size: 20px;
+}
+
+.navbar-nav a {
+  color: black;
+}
+
+.navbar-nav > li > a {
+  line-height: 44px;
+  font-size: 16px;
+}
+
+.character-block {
+  margin-top: 31px;
+  padding: 20px 10px;
+  background: #EFEFEF;
+}
+
+.more-results-block {
+  margin-top: 20px;
+  padding: 10px 10px;
+  background: #EFEFEF;
+}
+
+.more-results-block a {
+  color: #337ab7;
+}
+
+ul {
+  border: 0px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li.resultList {
+  color: #efefef;
+  padding: 7px;
+}
+
+li.resultList:nth-child(odd) {
+  background: #2b3e50;
+}
+li.resultList:nth-child(even) {
+  background: #2D3238;
+}

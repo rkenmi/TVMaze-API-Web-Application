@@ -20,4 +20,7 @@ module.exports = function(app) {
     });
   });
 
+  app.get('/api/shows/:leg/details', function(req, res){
+    console.log(req.params.leg);
+  });
 };

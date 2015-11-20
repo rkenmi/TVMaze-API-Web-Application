@@ -1,5 +1,5 @@
 <div class="row" ng-repeat="show in shows">
-  <div class="col-xs-12">
+
     <div class="panel panel-primary">
       <div class="panel-heading">
         <div class="panel-title">
@@ -13,12 +13,16 @@
           <p class="lead">
             {{removeHTML(show.summary)}}
           </p>
+          <form ng-submit="showDetails()">
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Details</button>
+            </div>
+          </form>
         </div>
         <div class="col-md-3">
             <img ng-src="{{show.image.medium}}"/>
         </div>
-
       </div>
     </div>
-  </div>
+
 </div>
