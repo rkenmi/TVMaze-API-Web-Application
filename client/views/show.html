@@ -1,0 +1,27 @@
+<div class="container">
+
+  <div class="page-header">
+      <h1>{{show.name}}</h1>
+      <span class="column" ng-repeat="genre in show.genres">
+        <span style="padding-right: 3em">{{genre}}</span>
+      </span>
+  </div>
+  <div>
+      <span class="pull-left" style="width: 50%">
+        <img class="img-thumbnail" ng-src="{{show.image.medium}}"/>
+      </span>
+      <span class="pull-right" style="width: 50%">
+        <h2>Summary</h2>
+        {{removeHTML(show.summary)}}
+        <h2>Cast</h2>
+        <li ng-repeat="castMember in showCast">
+          <ul>
+            <img class="img-thumbnail" ng-src="{{displayImg(castMember)}}" style="width: 100px; height: 100px;"/>
+            {{castMember.person.name}}  as  <b>{{castMember.character.name}}</b>
+          </ul>
+        </li>
+      </span>
+  </div>
+
+
+</div>

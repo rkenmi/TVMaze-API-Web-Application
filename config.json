@@ -1,6 +1,8 @@
 {
-  "TVMaze":{
-    "url": "http://api.tvmaze.com/search/shows?q=",
-    "key": ""
+  "Search":{
+    "url": "http://api.tvmaze.com/search/shows?q="
+  },
+  "Cast":{
+    "url": "http://api.tvmaze.com/shows/:id/cast"
   }
 }

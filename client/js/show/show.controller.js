@@ -1,12 +1,22 @@
-angular.module('search.controller', [])
-  .controller('SearchController', function ($scope, SearchService) {
-    $scope.shows = [];
-    $scope.searchStr;
+angular.module('show.controller', [])
+  .controller('ShowController', function ($scope, ShowService, show) {
+    if(show != undefined){
+        $scope.show = show[0];
+        $scope.showCast = show[1];
 
-    $scope.searchShow = function(){
-      $scope.searchStr = "Your search for '" + $scope.search + "'";
-      var results = SearchService.query( {q: $scope.search}, function () { //.query returns a list of all results in an array
-        $scope.shows = results;
-      });
-    };
+        console.log("show.controller: " + $scope.show);
+    }
+
+    $scope.removeHTML = function (text) {
+      return text.replace(/<(?:.|\n)*?>/gm, ''); // a function borrowed from StackOverflow on removing HTML tags from strings
+    }
+
+    $scope.displayImg = function (obj) {
+      if (obj.character.image){
+        return obj.character.image.medium;
+      }else if(obj.person.image){
+        return obj.person.image.medium;
+      }else return "views/img/default_avatar.png";
+    }
+
   });
