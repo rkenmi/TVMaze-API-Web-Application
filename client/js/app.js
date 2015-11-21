@@ -1,4 +1,4 @@
-angular.module('app', ['ngRoute', 'ngResource', 'search.controller', 'search.service', 'search.directive', 'show.controller','show.service'])
+angular.module('app', ['ngSanitize', 'ngRoute', 'ngResource', 'search.controller', 'search.service', 'search.directive', 'show.controller','show.service'])
   .config(['$routeProvider', '$locationProvider',
     function ($routeProvider, $locationProvider) {
 
