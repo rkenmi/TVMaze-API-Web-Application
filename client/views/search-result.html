@@ -4,10 +4,16 @@
       <div class="panel-heading">
         <div class="panel-title">
           <h3>{{show.name}}</h3>
+          <h6>
+            <span class="column" ng-repeat="genre in show.genres">
+              <span style="padding-right: 3em">{{genre}}</span>
+            </span>
+          </h6>
         </div>
       </div>
       <div class="panel-body">
         <div class="pull-left" style="width: 80%">
+
           <h4>Description</h4>
           <hr />
           <p ng-bind-html="show.summary"/>
