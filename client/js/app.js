@@ -1,4 +1,4 @@
-angular.module('app', ['ngAnimate', 'ngSanitize', 'ngRoute', 'ngResource', 'search.controller', 'search.service', 'search.directive', 'show.controller','show.service', 'search-history.service'])
+angular.module('app', ['ui.bootstrap', 'ngAnimate', 'ngSanitize', 'ngRoute', 'ngResource', 'search.controller', 'search.service', 'search.directive', 'show.controller','show.service', 'search-history.service'])
   .config(['$routeProvider', '$locationProvider',
     function ($routeProvider, $locationProvider) {
 
@@ -7,7 +7,15 @@ angular.module('app', ['ngAnimate', 'ngSanitize', 'ngRoute', 'ngResource', 'sear
             templateUrl: 'views/search.html',
             controller: 'SearchController',
             resolve: {
-              query : function () { return undefined; }
+              query : function () { return undefined; },
+              history: function (SearchHistoryService, $q){
+                var deferred = $q.defer();
+                var promise = deferred.promise;
+                SearchHistoryService.query( {}, function (data) {
+                  deferred.resolve(data);
+                });
+                return promise;
+              }
             }
           })
           .when('/search/:query', {
@@ -15,8 +23,15 @@ angular.module('app', ['ngAnimate', 'ngSanitize', 'ngRoute', 'ngResource', 'sear
             controller: 'SearchController',
             resolve: {
               query : function ($route) {
-                console.log($route.current.params.query);
                 return $route.current.params.query;
+              },
+              history: function (SearchHistoryService, $q){
+                var deferred = $q.defer();
+                var promise = deferred.promise;
+                SearchHistoryService.query( {}, function (data) {
+                  deferred.resolve(data);
+                });
+                return promise;
               }
             }
           })
@@ -28,7 +43,6 @@ angular.module('app', ['ngAnimate', 'ngSanitize', 'ngRoute', 'ngResource', 'sear
                 var deferred = $q.defer();
                 var promise = deferred.promise;
                 ShowService.query( {id: $route.current.params.id}, function (data) {
-                   console.log(data);
                    deferred.resolve(data);
                  });
                 return promise;
@@ -47,7 +61,6 @@ angular.module('app', ['ngAnimate', 'ngSanitize', 'ngRoute', 'ngResource', 'sear
                 var deferred = $q.defer();
                 var promise = deferred.promise;
                 SearchHistoryService.query( {}, function (data) {
-                  console.log(data);
                   deferred.resolve(data);
                 });
                 return promise;

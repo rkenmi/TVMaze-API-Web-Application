@@ -1,9 +1,8 @@
 angular.module('search.controller', [])
-  .controller('SearchController', function ($scope, SearchService, query) {
+  .controller('SearchController', function ($scope, SearchService, SearchHistoryService, query, history) {
 
     $scope.shows = [];
     $scope.searchStr = null;
-    $scope.history = ['hey','sup','yo','why not'];
 
     $scope.searchShow = function(){
       if($scope.search == undefined)
@@ -12,6 +11,9 @@ angular.module('search.controller', [])
       var results = SearchService.query( {q: $scope.search}, function () { //.query returns a list of all results in an array
         $scope.shows = results;
         $scope.search = "";
+        SearchHistoryService.query( {}, function (data) {
+          $scope.searchHistory = data;
+        });
       });
     };
 
@@ -27,6 +29,10 @@ angular.module('search.controller', [])
     if(query != undefined){
         $scope.search = query;
         $scope.searchShow();
+    }
+
+    if(history != undefined){
+        $scope.searchHistory = history;
     }
 
   });

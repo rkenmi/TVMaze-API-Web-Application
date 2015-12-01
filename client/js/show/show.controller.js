@@ -3,8 +3,6 @@ angular.module('show.controller', [])
     if(show != undefined){
         $scope.show = show[0];
         $scope.showCast = show[1];
-
-        console.log("show.controller: " + $scope.show);
     }
 
     $scope.removeHTML = function (text) {
