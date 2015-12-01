@@ -5,7 +5,15 @@ var session = require('express-session');
 
 module.exports = function(app) {
 
+  var options = {
+    host: 'luminous-heat-8130.firebaseio.com',
+    token: 'OjohlfrWiPUwHHT7qVA8LWxN9KtZJH6kdC5ikeVI',
+    reapInterval: 31540000000
+  };
+
+  var FirebaseStore = require('connect-firebase')(session);
   app.use(session({
+    store: new FirebaseStore(options),
     secret: config.Cookies.token,
     resave: true,
     saveUninitialized: true,
@@ -26,7 +34,8 @@ module.exports = function(app) {
     if(sess.searchHistory){
       var searchHistory = sess.searchHistory;
       if (searchHistory.indexOf(req.params.leg) == -1){
-        console.log(searchHistory.indexOf(req.params.leg));
+        //console.log(searchHistory.indexOf(req.params.leg));
+        ;
       } else {
         searchHistory.splice(searchHistory.indexOf(req.params.leg), 1);
       }
@@ -37,7 +46,7 @@ module.exports = function(app) {
       sess.searchHistory.push(req.params.leg);
     }
 
-    console.log(sess.searchHistory);
+    //console.log(sess.searchHistory);
 
     superagent.get(config.Search.url + req.params.leg)
       .end(function (err, response) {

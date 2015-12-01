@@ -3,6 +3,7 @@ angular.module('search.controller', [])
 
     $scope.shows = [];
     $scope.searchStr = null;
+    $scope.history = ['hey','sup','yo','why not'];
 
     $scope.searchShow = function(){
       if($scope.search == undefined)

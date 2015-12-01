@@ -8,6 +8,7 @@
   "dependencies":{
     "express": "*",
     "superagent": "*",
-    "express-session": "*"
+    "express-session": "*",
+    "connect-firebase": "*"
   }
 }
