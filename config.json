@@ -4,5 +4,8 @@
   },
   "Cast":{
     "url": "http://api.tvmaze.com/shows/:id/cast"
+  },
+  "Cookies":{
+    "token": "z98ak3mma77dllo219uasdhalu"
   }
 }

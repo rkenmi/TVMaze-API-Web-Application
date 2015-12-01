@@ -1,10 +1,44 @@
 var config = require('../config.json');
 var superagent = require('superagent');
+var fs = require('fs');
+var session = require('express-session');
 
 module.exports = function(app) {
-  var arr;
+
+  app.use(session({
+    secret: config.Cookies.token,
+    resave: true,
+    saveUninitialized: true,
+    cookie: {
+      searchHistory : [],
+      maxAge : 31540000000
+    }
+  }))
+
+  app.get('/api/searchHistory', function(req, res){
+    var sess = req.session;
+    res.send(sess.searchHistory);
+  });
 
   app.get('/api/shows/:leg', function(req, res){
+    var sess = req.session;
+
+    if(sess.searchHistory){
+      var searchHistory = sess.searchHistory;
+      if (searchHistory.indexOf(req.params.leg) == -1){
+        console.log(searchHistory.indexOf(req.params.leg));
+      } else {
+        searchHistory.splice(searchHistory.indexOf(req.params.leg), 1);
+      }
+      searchHistory.push(req.params.leg);
+      sess.searchHistory = searchHistory;
+    } else{
+      sess.searchHistory = [];
+      sess.searchHistory.push(req.params.leg);
+    }
+
+    console.log(sess.searchHistory);
+
     superagent.get(config.Search.url + req.params.leg)
       .end(function (err, response) {
         if(err) console.error("Error occured for search query");
@@ -21,7 +55,7 @@ module.exports = function(app) {
   });
 
   app.get('/api/shows/:leg/details', function(req, res){
-    var arr;
+
     var api_parts = config.Cast.url.split(':id');
     var url = api_parts[0] + req.params.leg;
 

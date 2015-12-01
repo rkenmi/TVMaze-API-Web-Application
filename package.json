@@ -7,6 +7,7 @@
   "license": "ISC",
   "dependencies":{
     "express": "*",
-    "superagent": "*"
+    "superagent": "*",
+    "express-session": "*"
   }
 }
