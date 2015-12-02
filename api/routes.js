@@ -41,6 +41,7 @@ module.exports = function(app) {
       }
       searchHistory.push(req.params.leg);
       sess.searchHistory = searchHistory;
+      sess.searchHistory;
     } else{
       sess.searchHistory = [];
       sess.searchHistory.push(req.params.leg);

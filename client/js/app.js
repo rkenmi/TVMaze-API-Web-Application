@@ -49,24 +49,6 @@ angular.module('app', ['ui.bootstrap', 'ngAnimate', 'ngSanitize', 'ngRoute', 'ng
               }
             }
           })
-          .when('/search-history',{
-            templateUrl: 'views/search-history.html',
-            controller: function ($scope, SearchHistoryService, history) {
-              if(history != undefined){
-                  $scope.searchHistory = history;
-              }
-            },
-            resolve: {
-              history: function (SearchHistoryService, $q){
-                var deferred = $q.defer();
-                var promise = deferred.promise;
-                SearchHistoryService.query( {}, function (data) {
-                  deferred.resolve(data);
-                });
-                return promise;
-              }
-            }
-          })
           .otherwise({
             redirectTo: '/'
           });

@@ -3,6 +3,8 @@ angular.module('search.controller', [])
 
     $scope.shows = [];
     $scope.searchStr = null;
+    $scope.historyVisible = false;
+    $scope.expandSign = '+';
 
     $scope.searchShow = function(){
       if($scope.search == undefined)
@@ -23,6 +25,15 @@ angular.module('search.controller', [])
       }else{
         var str = searchStr + " shows " +resNum + " results.";
         return str;
+      }
+    }
+
+    $scope.clickHistory = function(){
+      $scope.historyVisible = !($scope.historyVisible);
+      if($scope.expandSign == '-'){
+        $scope.expandSign = '+';
+      } else {
+        $scope.expandSign = '-';
       }
     }
 
