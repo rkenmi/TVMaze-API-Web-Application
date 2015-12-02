@@ -7,16 +7,18 @@ angular.module('search.controller', [])
     $scope.expandSign = '+';
 
     $scope.searchShow = function(){
-      if($scope.search == undefined)
+      if(!$scope.search)
         return 0;
-      $scope.searchStr = "Your search for '" + $scope.search + "'";
-      var results = SearchService.query( {q: $scope.search}, function () { //.query returns a list of all results in an array
-        $scope.shows = results;
-        $scope.search = "";
-        SearchHistoryService.query( {}, function (data) {
-          $scope.searchHistory = data;
+      else{
+        $scope.searchStr = "Your search for '" + $scope.search + "'";
+        var results = SearchService.query( {q: $scope.search}, function () { //.query returns a list of all results in an array
+          $scope.shows = results;
+          $scope.search = "";
+          SearchHistoryService.query( {}, function (data) {
+            $scope.searchHistory = data;
+          });
         });
-      });
+      }
     };
 
     $scope.displayText = function(searchStr, resNum){

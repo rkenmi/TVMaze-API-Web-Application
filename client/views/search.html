@@ -1,7 +1,7 @@
 <div class="container">
   <div class="page-header">
     <h3>Search History <a ng-click="clickHistory()">[{{expandSign}}]</a></h3>
-    <span style="padding-right: 20px" ng-repeat="query in searchHistory.slice().reverse() track by $index" ng-show="historyVisible">
+    <span style="padding-right: 20px" ng-repeat="query in searchHistory.slice().reverse()" ng-show="historyVisible">
       <p style="display: inline-block"><a ng-href="/search/{{query}}">{{query}}</a></p>
     </span>
   </div>
