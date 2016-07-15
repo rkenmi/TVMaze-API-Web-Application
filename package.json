@@ -1,7 +1,7 @@
 {
-  "name": "proj1",
+  "name": "tvfilms",
   "version": "1.0.0",
-  "description": "Project 1 - TV Show API Search",
+  "description": "TVFilms",
   "main": "server.js",
   "author": "Rick Miyamoto",
   "license": "ISC",
